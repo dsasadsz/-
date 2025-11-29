@@ -15,7 +15,9 @@
   Система: Добавляет сотрудника в базу данных.
   HR и IT: HR уведомляет IT, и IT начинает настройку рабочего места. Эти действия происходят одновременно и сходятся в точке Join перед завершением процесса.
 
+  
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000000', 'textColor': '#000000', 'lineColor': '#000000'}}}%%
 graph TD
     %%  СТИЛИЗАЦИЯ
     classDef startend fill:#f96,stroke:#333,stroke-width:2px,rx:10,ry:10;
