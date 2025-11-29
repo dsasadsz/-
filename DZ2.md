@@ -1,4 +1,4 @@
-```mermaid 
+```mermaid
 componentDiagram
     %% --- ВНЕШНИЕ СИСТЕМЫ ---
     component "Внешние Курьерские Службы\n(External Logistics Providers)" as ExtCouriers
@@ -75,4 +75,4 @@ componentDiagram
     Backend --> I_Pay : Обработка транзакций
 
 
-```
+ ```
