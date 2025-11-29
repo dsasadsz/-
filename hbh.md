@@ -30,6 +30,9 @@ classDiagram
         +viewLogs()
     }
 
+
+
+
     %% 2.  товар
     class Product {
         +int id
@@ -47,6 +50,11 @@ classDiagram
         +string description
     }
 
+
+
+
+
+
     %% 3.  заказ
     class Order {
         +int id
@@ -59,7 +67,6 @@ classDiagram
     }
 
     class OrderItem {
-        %% Промежуточный класс для связи Многие-ко-Многим между Заказом и Товаром
         +int quantity
         +double priceAtPurchase
         +calculateSubTotal()
@@ -79,7 +86,11 @@ classDiagram
         +isValid()
     }
 
-    %% 4. Модуль логистики
+
+
+
+
+    %% 4.  логистиккаа
     class Delivery {
         +int id
         +string deliveryAddress
@@ -97,7 +108,7 @@ classDiagram
         +updateDeliveryStatus()
     }
 
-    %% 5. Модуль финансов
+    %% 5.  финансыы
     class Payment {
         +int id
         +double amount
@@ -108,7 +119,7 @@ classDiagram
         +refund()
     }
 
-    %% 6. Модуль отзывов
+    %% 6.  отзыв
     class Review {
         +int id
         +int rating
@@ -116,7 +127,7 @@ classDiagram
         +Date date
     }
 
-    %% --- ENUMS (Перечисления) ---
+    %%  ENUMS (Перечисления) 
     class OrderStatus {
         <<enumeration>>
         PROCESSING
@@ -147,7 +158,14 @@ classDiagram
         REFUNDED
     }
 
-    %% --- ОТНОШЕНИЯ (RELATIONSHIPS) ---
+
+
+
+
+
+
+
+    %%  ОТНОШЕНИЯ 
 
     %% Наследование
     User <|-- Client
