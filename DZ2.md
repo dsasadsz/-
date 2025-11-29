@@ -1,16 +1,16 @@
 ```mermaid
 graph TD
-    %% --- ВНЕШНИЕ СИСТЕМЫ ---
+    %% ВНЕШНИЕ СИСТЕМЫ
     ExtCouriers["Внешние Курьерские Службы<br>(External Logistics Providers)"]
     PaymentSys["Платежный Шлюз<br>(Payment Gateway)"]
 
-    %% --- FRONTEND ---
+    %% FRONTEND
     subgraph Frontend_Layer [Frontend Layer]
         WebApp["Web Application<br>(Клиенты)"]
         MobApp["Mobile Application<br>(Курьеры)"]
     end
 
-    %% --- BACKEND ---
+    %%  BACKEND 
     subgraph Backend_System [Backend System]
         Backend["Backend Core<br>(Order Management)"]
         
@@ -23,7 +23,7 @@ graph TD
         DB[("База Данных<br>(DB)")]
     end
 
-    %% --- СВЯЗИ ---
+    %%  СВЯЗИ 
 
     %% Frontend -> Backend
     WebApp -- "REST API / HTTPS" --> Backend
@@ -44,7 +44,7 @@ graph TD
     CourierAdapter -- "External API / Webhooks" --> ExtCouriers
     Backend -- "Payment API" --> PaymentSys
 
-    %% Стилизация для красоты
+    %% Стилизацwd
     style Backend fill:#f9f,stroke:#333,stroke-width:2px
     style DB fill:#ff9,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
 
