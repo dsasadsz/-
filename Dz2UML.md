@@ -1,35 +1,28 @@
 ```mermaid
+graph LR
+    %% States and Start Node
+    Start(([*] Начало))
+    Idle(1. Idle / Ожидание)
+    WaitM(2. WaitingForMoney / Ждет денег)
+    MoneyR(3. MoneyReceived / Деньги внесены)
+    TicketD(4. TicketDispensed / Билет выдан)
+    Canceled(5. TransactionCanceled / Отменено)
 
-stateDiagram-v2
-    direction LR
-    
-    [*] --> Idle
-    
-    state Idle
-    state WaitingForMoney
-    state MoneyReceived
-    state TicketDispensed
-    state TransactionCanceled
-
-    %% Описание состояний:
-    note right of Idle: Ожидание действия
-    note right of WaitingForMoney: Ждет внесения суммы
-    note right of MoneyReceived: Внесена достаточная сумма
-    note right of TicketDispensed: Билет выдан
-    note right of TransactionCanceled: Сброс/Возврат денег
+    %% Flow: Start -> Idle
+    Start --> Idle
 
     %% Основной поток
-    Idle --> WaitingForMoney: SelectTicket / requestPayment()
-    WaitingForMoney --> MoneyReceived: InsertMoney [amount >= price] / lockTicket()
-    MoneyReceived --> TicketDispensed: DispenseTicket / issueTicketAndChange()
-    TicketDispensed --> Idle: [Возврат в исходное]
+    Idle -- SelectTicket / requestPayment() --> WaitM
+    WaitM -- InsertMoney [amount >= price] / lockTicket() --> MoneyR
+    MoneyR -- DispenseTicket / issueTicketAndChange() --> TicketD
 
     %% Сценарий отмены
-    WaitingForMoney --> TransactionCanceled: CancelTransaction / refundMoney()
-    MoneyReceived --> TransactionCanceled: CancelTransaction / refundMoney()
+    WaitM -- CancelTransaction / refundMoney() --> Canceled
+    MoneyR -- CancelTransaction / refundMoney() --> Canceled
     
-    %% Завершение транзакции
-    TransactionCanceled --> Idle: [Возврат в исходное]
+    %% Циклы (Возврат в исходное)
+    TicketD --> Idle
+    Canceled --> Idle
 ```
 
 
