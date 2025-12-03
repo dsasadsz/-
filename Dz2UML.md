@@ -3,32 +3,20 @@
 stateDiagram-v2
     direction LR
     
-    [*] --> Idle: [Начало работы]
+    [*] --> Idle
     
-    state Idle {
-        Idle : Ожидание действия
-        state Idle_Nested
-    }
-    
-    state WaitingForMoney {
-        WaitingForMoney : Ждет внесения суммы
-        state WaitingForMoney_Nested
-    }
-    
-    state MoneyReceived {
-        MoneyReceived : Внесена достаточная сумма
-        state MoneyReceived_Nested
-    }
-    
-    state TicketDispensed {
-        TicketDispensed : Билет выдан
-        state TicketDispensed_Nested
-    }
-    
-    state TransactionCanceled {
-        TransactionCanceled : Сброс/Возврат денег
-        state TransactionCanceled_Nested
-    }
+    state Idle
+    state WaitingForMoney
+    state MoneyReceived
+    state TicketDispensed
+    state TransactionCanceled
+
+    %% Описание состояний:
+    note right of Idle: Ожидание действия
+    note right of WaitingForMoney: Ждет внесения суммы
+    note right of MoneyReceived: Внесена достаточная сумма
+    note right of TicketDispensed: Билет выдан
+    note right of TransactionCanceled: Сброс/Возврат денег
 
     %% Основной поток
     Idle --> WaitingForMoney: SelectTicket / requestPayment()
